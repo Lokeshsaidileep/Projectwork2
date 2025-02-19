@@ -123,10 +123,158 @@ A Smart Traffic Light System integrates advanced technologies to optimize traffi
 
 ![image](https://github.com/user-attachments/assets/89bc30b5-054c-4a52-91b4-d742ca42b32c)
 
+# program 
+
+import time
+import random
+
+# Define a TrafficLight class
+class TrafficLight:
+    def __init__(self, direction):
+        self.direction = direction  # e.g., "North-South" or "East-West"
+        self.state = "RED"  # Initial state is RED
+        self.green_time = 10  # default green time
+        self.yellow_time = 3
+        self.red_time = 10
+    
+    def set_timings(self, green_time, yellow_time, red_time):
+        self.green_time = green_time
+        self.yellow_time = yellow_time
+        self.red_time = red_time
+
+    def get_state(self):
+        return self.state
+    
+    def switch_to(self, new_state):
+        self.state = new_state
+        print(f"{self.direction} traffic light is now {self.state}")
+
+# Define an Intersection class
+class Intersection:
+    def __init__(self):
+        # Create two traffic lights for an intersection
+        self.ns_light = TrafficLight("North-South")
+        self.ew_light = TrafficLight("East-West")
+        
+    def detect_traffic(self):
+        # Simulate vehicle count for each direction
+        ns_vehicle_count = random.randint(0, 10)
+        ew_vehicle_count = random.randint(0, 10)
+        return ns_vehicle_count, ew_vehicle_count
+
+    def adjust_timings(self, ns_vehicle_count, ew_vehicle_count):
+        # Adjust green light time based on traffic count
+        if ns_vehicle_count > ew_vehicle_count:
+            self.ns_light.set_timings(15, 3, 15)
+            self.ew_light.set_timings(10, 3, 15)
+        else:
+            self.ns_light.set_timings(10, 3, 15)
+            self.ew_light.set_timings(15, 3, 15)
+    
+    def control_traffic(self):
+        # Detect traffic and adjust timings
+        ns_vehicle_count, ew_vehicle_count = self.detect_traffic()
+        print(f"Detected vehicles - North-South: {ns_vehicle_count}, East-West: {ew_vehicle_count}")
+        
+        # Adjust timings based on traffic
+        self.adjust_timings(ns_vehicle_count, ew_vehicle_count)
+        
+        # Control light sequence
+        self.ns_light.switch_to("GREEN")
+        time.sleep(self.ns_light.green_time)
+        self.ns_light.switch_to("YELLOW")
+        time.sleep(self.ns_light.yellow_time)
+        self.ns_light.switch_to("RED")
+        
+        self.ew_light.switch_to("GREEN")
+        time.sleep(self.ew_light.green_time)
+        self.ew_light.switch_to("YELLOW")
+        time.sleep(self.ew_light.yellow_time)
+        self.ew_light.switch_to("RED")
+
+# Main simulation loop
+intersection = Intersection()
+
+for _ in range(3):  # Run simulation for 3 cycles
+    intersection.control_traffic()
+    time.sleep(2)  # Wait before the next cycle
+
+# Define a TrafficLight class
+class TrafficLight:
+    def __init__(self, direction):
+        self.direction = direction  # e.g., "North-South" or "East-West"
+        self.state = "RED"  # Initial state is RED
+        self.green_time = 10  # default green time
+        self.yellow_time = 3
+        self.red_time = 10
+
+    def set_timings(self, green_time, yellow_time, red_time):
+        self.green_time = green_time
+        self.yellow_time = yellow_time
+        self.red_time = red_time
+
+    def get_state(self):
+        return self.state
+
+    def switch_to(self, new_state):
+        self.state = new_state
+        print(f"{self.direction} traffic light is now {self.state}")
+
+# Define an Intersection class
+class Intersection:
+    def __init__(self):
+        # Create two traffic lights for an intersection
+        self.ns_light = TrafficLight("North-South")
+        self.ew_light = TrafficLight("East-West")
+
+    def detect_traffic(self):
+        # Simulate vehicle count for each direction
+        ns_vehicle_count = random.randint(0, 10)
+        ew_vehicle_count = random.randint(0, 10)
+        return ns_vehicle_count, ew_vehicle_count
+
+    def adjust_timings(self, ns_vehicle_count, ew_vehicle_count):
+        # Adjust green light time based on traffic count
+        if ns_vehicle_count > ew_vehicle_count:
+            self.ns_light.set_timings(15, 3, 15)
+            self.ew_light.set_timings(10, 3, 15)
+        else:
+            self.ns_light.set_timings(10, 3, 15)
+            self.ew_light.set_timings(15, 3, 15)
+
+    def control_traffic(self):
+        # Detect traffic and adjust timings
+        ns_vehicle_count, ew_vehicle_count = self.detect_traffic()
+        print(f"Detected vehicles - North-South: {ns_vehicle_count}, East-West: {ew_vehicle_count}")
+
+        # Adjust timings based on traffic
+        self.adjust_timings(ns_vehicle_count, ew_vehicle_count)
+
+        # Control light sequence
+        self.ns_light.switch_to("GREEN")
+        time.sleep(self.ns_light.green_time)
+        self.ns_light.switch_to("YELLOW")
+        time.sleep(self.ns_light.yellow_time)
+        self.ns_light.switch_to("RED")
+
+        self.ew_light.switch_to("GREEN")
+        time.sleep(self.ew_light.green_time)
+        self.ew_light.switch_to("YELLOW")
+        time.sleep(self.ew_light.yellow_time)
+        self.ew_light.switch_to("RED")
+
+# Main simulation loop
+intersection = Intersection()
+
+for _ in range(3):  # Run simulation for 3 cycles
+    intersection.control_traffic()
+    time.sleep(2)  # Wait before the next cycle
+
+# Final output
+
+![Screenshot (128)](https://github.com/user-attachments/assets/26010928-5ea1-411c-9aec-7bc4d6810541)
 
 
-
-## Output
 
 ## Login Page :
 
